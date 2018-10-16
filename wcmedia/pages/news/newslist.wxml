@@ -1,0 +1,47 @@
+<!-- pages/news/newslist.wxml -->
+
+<view class='cover' wx:if='{{showCover}}'>
+  <image class='guide_image' src='../../images/guide_page.png' mode='aspectFit'></image>
+  <button class='guide_skip_btn' type='primary' hover-class='bottom-button-hover' bindtap='skipAction'>跳过</button>
+</view>
+
+<view class='scrollBgView'></view>
+
+<scroll-view class='tab_scroll' scroll-x="true" scroll-left="{{topTabScrollLeft}}">
+  <view class='tab_scroll_container' style="width:{{topScrollWidth}}rpx;">
+    <view class='tap_widget_container' wx:for="{{topSwiperList}}" style="width:{{topTabWidth}}rpx;">
+      <view class='tap_widget_textwidget' bindtap='changeview' style="width:{{topTabWidth}}rpx;color:{{currentTabIndex==index?'#ffad42':'#030303'}};" data-current="{{index}}">{{item.title}}</view>
+      <view class='tap_widget_indexbarwidget' style="display:{{currentTabIndex==index?'block':'none'}}; width:{{topTabWidth/3}}rpx;margin-left:{{topTabWidth/3}}rpx;"></view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class='content-container'>
+  <!-- 无数据的占位界面 -->
+  <view class="nodata-container" hidden='{{newsList.length > 0}}'>
+    <image class='no_data_image' src='../../images/no_data.png' mode='aspectFit'></image>
+    <view class='no_data_content'>该栏目暂无数据</view>
+  </view>
+
+  <!-- 显示内容的界面 -->
+  <view class="free-WaterfallFlow"  hidden='{{newsList.length == 0}}'>
+       <view class="flex-wrap" wx:for="{{newsList}}" wx:key='{{item.cover}}' bindtap='goDetail' id="{{item.id}}">
+          <image mode="aspectFill" src="{{image_baseurl}}{{item.cover}}">
+            <view class='item_title'>{{item.title}}</view>
+          </image>
+          <view class='item_bottom_contain'>
+            <view class='item_container'>
+              <image class='item_icon' src='../../images/list_like_icon.png' mode='widthFix'></image>
+              <view class='item_content'>{{item.likeCount}}</view>
+            </view>
+            <view class='item_container'>
+              <image class='item_icon' src='../../images/scan_icon.png' mode='widthFix' style='padding-top:10rpx;'></image>
+              <view class='item_content'>{{item.readCount}}</view>
+            </view>
+          </view>
+        </view>
+  </view>
+</view>
+
+
+    

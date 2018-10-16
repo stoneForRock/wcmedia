@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/news/newslist",
+    "pages/detail/newsdetail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffad42",
+    "navigationBarTextStyle": "#ffffff",
+    "navigationBarTitleText": "望成传媒",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "networkTimeout": {
+    "request": 3000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  }
+}

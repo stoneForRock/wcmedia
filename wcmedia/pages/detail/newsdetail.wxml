@@ -1,0 +1,32 @@
+<!-- pages/detail/newsdetail.wxml -->
+<import src="../../lib/wxParse/wxParse.wxml"/>  
+
+<view class='detial_container'>
+  <view class='topinfo_container'>
+    <view class='content_title'>{{newsDetailInfo.title}}</view>
+    <view class='content_userinfo'>
+      <view class='author_name'>作者:{{newsDetailInfo.author}}</view>
+      <view class='publish_time'>发布时间:{{newsDetailInfo.createTime}}  阅读量: {{newsDetailInfo.readCount}}</view>
+    </view>
+  </view>
+  
+  <view  class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article_content.nodes}}"/>
+  </view>
+
+  <button class="kf_button" open-type="contact" session-from="weapp">
+      <image class="kf_image" src="../../images/kefu.png"></image>
+  </button>
+
+  <view class='bottom_btn_container'>
+    <button class='bottom_btn' id='like_button' type='primary' hover-class='bottom-button-hover' bindtap='likeAction'>
+      <image src='../../images/unlike_icon.png'></image>
+      {{likeCount}}
+    </button>
+    <button class='bottom_btn' id='share_button' open-type="share" type='primary' hover-class='bottom-button-hover'>
+      <image src='../../images/share_icon.png' mode='widthFix'></image>
+      分享给好友
+    </button>
+  </view>
+
+</view>
